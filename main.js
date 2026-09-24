@@ -14,10 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initTestimonialSlider();
   initMediumInsights();
   initScrollToTop();
+  initScrollProgressBeam();
+  initScrollRevealObserver();
+  init3DCardTilt();
 });
 
 /* --------------------------------------------------------------------------
-   1. ADVANCED NEURAL SYNAPSE CANVAS PHYSICS (WITH SIGNAL PULSES & GRAVITY)
+   1. ADVANCED NEURAL SYNAPSE CANVAS PHYSICS (CRIMSON & EMBER THEME)
    -------------------------------------------------------------------------- */
 function initNeuralCanvas() {
   const canvas = document.getElementById('neuralCanvas');
@@ -29,6 +32,7 @@ function initNeuralCanvas() {
   let signalPulses = [];
   const particleCount = 85;
   const maxDistance = 150;
+  const themeColors = ['#f64436', '#fb7225', '#fbc87c', '#9dd0e5', '#f2ebe1', '#ffffff'];
 
   const mouse = { x: null, y: null, radius: 200 };
 
@@ -49,9 +53,9 @@ function initNeuralCanvas() {
     const cx = e.clientX - rect.left;
     const cy = e.clientY - rect.top;
 
-    for (let i = 0; i < 12; i++) {
-      const angle = (Math.PI * 2 * i) / 12;
-      const speed = Math.random() * 3 + 2;
+    for (let i = 0; i < 14; i++) {
+      const angle = (Math.PI * 2 * i) / 14;
+      const speed = Math.random() * 3.5 + 2;
       particles.push(new Particle(cx, cy, Math.cos(angle) * speed, Math.sin(angle) * speed, true));
     }
     playSound('synth');
@@ -71,8 +75,8 @@ function initNeuralCanvas() {
       this.y = y !== undefined ? y : Math.random() * height;
       this.vx = vx !== undefined ? vx : (Math.random() - 0.5) * 0.9;
       this.vy = vy !== undefined ? vy : (Math.random() - 0.5) * 0.9;
-      this.radius = isSpark ? Math.random() * 2 + 1 : Math.random() * 2.5 + 1.2;
-      this.color = Math.random() > 0.4 ? '#eab308' : '#fef3c7';
+      this.radius = isSpark ? Math.random() * 2.2 + 1 : Math.random() * 2.4 + 1.2;
+      this.color = themeColors[Math.floor(Math.random() * themeColors.length)];
       this.isSpark = isSpark;
       this.life = isSpark ? 60 : Infinity;
     }
@@ -107,7 +111,7 @@ function initNeuralCanvas() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = this.color;
-      ctx.shadowBlur = this.isSpark ? 12 : 8;
+      ctx.shadowBlur = this.isSpark ? 14 : 8;
       ctx.shadowColor = this.color;
       ctx.fill();
       ctx.shadowBlur = 0;
@@ -135,7 +139,7 @@ function initNeuralCanvas() {
       ctx.arc(x, y, 2.5, 0, Math.PI * 2);
       ctx.fillStyle = '#ffffff';
       ctx.shadowBlur = 10;
-      ctx.shadowColor = '#eab308';
+      ctx.shadowColor = '#f71c19';
       ctx.fill();
       ctx.shadowBlur = 0;
     }
@@ -160,12 +164,12 @@ function initNeuralCanvas() {
         const dist = Math.sqrt(dx * dx + dy * dy);
 
         if (dist < maxDistance) {
-          const opacity = (1 - dist / maxDistance) * 0.35;
+          const opacity = (1 - dist / maxDistance) * 0.32;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(234, 179, 8, ${opacity})`;
-          ctx.lineWidth = 0.9;
+          ctx.strokeStyle = `rgba(246, 68, 54, ${opacity})`;
+          ctx.lineWidth = 0.85;
           ctx.stroke();
 
           if (Math.random() < 0.0015 && signalPulses.length < 15) {
@@ -616,12 +620,79 @@ function showToast(message) {
    11. CURSOR GLOW & NAV SCROLL
    -------------------------------------------------------------------------- */
 function initCursorGlow() {
+  const dot = document.getElementById('cursorDot');
+  const halo = document.getElementById('cursorHalo');
   const glow = document.getElementById('cursorGlow');
-  if (!glow) return;
+
+  if (!dot && !halo && !glow) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let haloX = mouseX;
+  let haloY = mouseY;
 
   window.addEventListener('mousemove', (e) => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    if (dot) {
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    }
+    if (glow) {
+      glow.style.left = `${mouseX}px`;
+      glow.style.top = `${mouseY}px`;
+    }
+  }, { passive: true });
+
+  // Smooth trailing spring physics for halo
+  function renderHalo() {
+    haloX += (mouseX - haloX) * 0.16;
+    haloY += (mouseY - haloY) * 0.16;
+
+    if (halo) {
+      halo.style.transform = `translate3d(${haloX}px, ${haloY}px, 0) translate(-50%, -50%)`;
+    }
+
+    requestAnimationFrame(renderHalo);
+  }
+
+  requestAnimationFrame(renderHalo);
+
+  // Mouse leave / enter window
+  document.addEventListener('mouseleave', () => {
+    if (dot) dot.style.opacity = '0';
+    if (halo) halo.style.opacity = '0';
+    if (glow) glow.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    if (dot) dot.style.opacity = '1';
+    if (halo) halo.style.opacity = '1';
+    if (glow) glow.style.opacity = '1';
+  });
+
+  // Click pulse animation
+  window.addEventListener('mousedown', () => {
+    document.body.classList.add('cursor-clicking');
+  });
+
+  window.addEventListener('mouseup', () => {
+    document.body.classList.remove('cursor-clicking');
+  });
+
+  // Interactive Hover Targets
+  const interactiveSelector = 'a, button, .project-card, .skill-card, .cert-card, .compact-t-card, .insight-card, input, textarea, .tech-tag, [role="button"]';
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      document.body.classList.add('cursor-active');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      document.body.classList.remove('cursor-active');
+    }
   });
 }
 
@@ -1097,3 +1168,79 @@ function initScrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
+
+/* --------------------------------------------------------------------------
+   12. TOP LASER SCROLL PROGRESS BEAM
+   -------------------------------------------------------------------------- */
+function initScrollProgressBeam() {
+  const beam = document.getElementById('scrollProgressBeam');
+  if (!beam) return;
+
+  function updateProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    beam.style.width = `${progress}%`;
+  }
+
+  window.addEventListener('scroll', () => {
+    requestAnimationFrame(updateProgress);
+  }, { passive: true });
+  updateProgress();
+}
+
+/* --------------------------------------------------------------------------
+   13. KINETIC BLUR-RESOLVE SCROLL REVEAL OBSERVER
+   -------------------------------------------------------------------------- */
+function initScrollRevealObserver() {
+  const targets = document.querySelectorAll(
+    '.project-card, .skill-card, .experience-card, .education-card, .cert-card, .insight-card, .compact-t-card, .section-header, .about-grid, .contact-grid'
+  );
+
+  targets.forEach((el, index) => {
+    el.classList.add('reveal-init');
+    const staggerDelay = (index % 4) * 0.08;
+    el.style.transitionDelay = `${staggerDelay}s`;
+  });
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal-visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  targets.forEach(el => observer.observe(el));
+}
+
+/* --------------------------------------------------------------------------
+   14. INTERACTIVE 3D PERSPECTIVE MAGNETIC CARD TILT
+   -------------------------------------------------------------------------- */
+function init3DCardTilt() {
+  const cards = document.querySelectorAll('.project-card, .skill-card, .cert-card, .compact-t-card, .insight-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -5.5;
+      const rotateY = ((x - centerX) / centerX) * 5.5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-5px)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+}
+

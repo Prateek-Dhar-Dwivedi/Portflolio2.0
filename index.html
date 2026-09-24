@@ -73,7 +73,7 @@
 >
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo_clean.png?v=11.0" />
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=2.0" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,11 +84,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   
   <!-- Stylesheet with Cache-Busting -->
-  <link rel="stylesheet" href="style.css?v=26.4" />
+  <link rel="stylesheet" href="style.css?v=27.2" />
 </head>
 <body>
 
-  <!-- Custom Cursor Glow -->
+  <!-- Top Laser Scroll Progress Beam -->
+  <div class="scroll-progress-beam" id="scrollProgressBeam"></div>
+
+  <!-- Interactive Dual-Layer Magnetic Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-halo" id="cursorHalo"></div>
   <div class="cursor-glow" id="cursorGlow"></div>
 
   <!-- Command Palette Shortcut Floating Trigger -->
@@ -101,7 +106,7 @@
   <!-- NAVIGATION -->
   <nav id="mainNav">
     <a href="#home" class="logo">
-      <img src="assets/logo_clean.png?v=11.0" alt="Logo" class="nav-logo-img" />
+      <img src="assets/logo1.png?v=1.0" alt="Logo" class="nav-logo-img" />
       <span class="logo-name">Prateek Dhar Dwivedi</span>
     </a>
 
@@ -142,6 +147,13 @@
     <div class="hero-glow-2"></div>
 
     <div class="hero-container">
+
+      <!-- Hero Social Proof Glassmorphism Pill -->
+      <a href="#testimonials" class="hero-social-proof-pill">
+        <span class="proof-pill-spark">★</span>
+        <span class="proof-pill-text">Endorsed by NIELIT Associate Dean &amp; Senior Scientists</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+      </a>
 
       <h1 class="hero-title">
         Engineering <span class="gradient-text">Intelligent Systems</span>
@@ -1326,64 +1338,6 @@
               </div>
             </div>
 
-            <!-- Slide 12: Twinkle Pratap -->
-            <div class="testimonial-slide">
-              <div class="compact-t-card glass-card">
-                <div class="t-quote-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3c0 4-2 6-4 6v2zm11 0c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3c0 4-2 6-4 6v2z"/></svg>
-                </div>
-                <p class="t-quote-text">
-                  "I have had the opportunity to interact with Prateek Dhar Dwivedi, and what truly stands out about him is the rare combination of academic excellence, humility, and genuine willingness to help others.
-                  <br/><br/>
-                  As someone who consistently performs exceptionally well academically, Prateek is not only knowledgeable but also very approachable. Despite being a topper, he never makes others feel uncomfortable or hesitant to ask questions. He patiently explains concepts, shares his knowledge, and is always willing to guide others whenever they need help.
-                  <br/><br/>
-                  What I appreciate most about Prateek is his polite and respectful behaviour. He communicates thoughtfully, listens to others, and treats everyone with kindness and respect. His calm and positive attitude makes him someone people can comfortably approach and learn from.
-                  <br/><br/>
-                  Beyond academics, his discipline, sincerity, problem-solving ability, and supportive nature make him an excellent senior and an inspiring person to have around. He is a great example of how being successful does not have to come at the cost of being humble and grounded.
-                  <br/><br/>
-                  I genuinely appreciate his guidance and support, and I feel fortunate to have a senior like Prateek who is not only accomplished but also genuinely kind, dependable, and encouraging."
-                </p>
-                <div class="t-author-row">
-                  <img src="assets/twinkle_pratap.jpg" alt="Twinkle Pratap" class="t-avatar" />
-                  <div class="t-author-info">
-                    <a href="https://www.linkedin.com/in/twinkle-pratap-745348389/" target="_blank" class="t-name">
-                      <span>Twinkle Pratap</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73c-.97 0-1.75-.79-1.75-1.76S5.53 3.2 6.5 3.2s1.75.79 1.75 1.77-.78 1.76-1.75 1.76zM20 19h-3v-5.6c0-3.37-4-3.12-4 0V19h-3V8h3v1.77C14.4 7.19 20 7 20 12.4V19z"/></svg>
-                    </a>
-                    <p class="t-role">AI &amp; ML Builder | Ideathon Top 4 🏆 @ NIELIT Ropar</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Slide 13: Aayushi Kumari -->
-            <div class="testimonial-slide">
-              <div class="compact-t-card glass-card">
-                <div class="t-quote-icon">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.75-2-2-2H4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3c0 4-2 6-4 6v2zm11 0c3 0 7-1 7-8V5c0-1.25-.75-2-2-2h-4c-1.25 0-2 .75-2 2v6c0 1.25.75 2 2 2h3c0 4-2 6-4 6v2z"/></svg>
-                </div>
-                <p class="t-quote-text">
-                  "I have known Prateek Dhar Dwivedi since my very first day in college. Coincidentally, he was one of the first seniors I approached to ask how I should begin my coding journey. Looking back, that conversation played a meaningful role in giving me the right direction, and I have continued seeking his advice on various technical domains ever since.
-                  <br/><br/>
-                  One of the qualities I admire most about Prateek is the way he mentors others. He explains concepts patiently, often using simple examples and a step-by-step approach, while encouraging self-learning instead of just providing answers. His guidance has always been practical, honest, and genuinely helpful.
-                  <br/><br/>
-                  Beyond his strong web development skills, Prateek stands out for his humility, discipline, and calm nature. He is approachable, professional, and always willing to support juniors and contribute to the community. His consistency, eagerness to keep learning, and commitment to continuous improvement make him someone others can look up to.
-                  <br/><br/>
-                  I sincerely appreciate the guidance he has provided throughout my college journey and wish him continued success. I am confident that his discipline, professionalism, and passion for learning will help him excel in whatever he chooses to pursue."
-                </p>
-                <div class="t-author-row">
-                  <img src="assets/aayushi_kumari.jpg" alt="Aayushi Kumari" class="t-avatar" />
-                  <div class="t-author-info">
-                    <a href="https://www.linkedin.com/in/aayushi-kumari-a9543a381/" target="_blank" class="t-name">
-                      <span>Aayushi Kumari</span>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zM8 19H5V8h3v11zM6.5 6.73c-.97 0-1.75-.79-1.75-1.76S5.53 3.2 6.5 3.2s1.75.79 1.75 1.77-.78 1.76-1.75 1.76zM20 19h-3v-5.6c0-3.37-4-3.12-4 0V19h-3V8h3v1.77C14.4 7.19 20 7 20 12.4V19z"/></svg>
-                    </a>
-                    <p class="t-role">AI × Cybersecurity Enthusiast | Decodelabs @ NIELIT Ropar</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
 
@@ -1507,6 +1461,48 @@
     </div>
   </section>
 
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider"></div>
+
+  <!-- STUDIO & VENTURE VIDEO SHOWCASE -->
+  <section class="company-showcase-section section-padding" id="venture">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-eyebrow">Engineering Studio</span>
+        <h2 class="section-title">Crafted with <span class="gradient-text">Vision &amp; Precision</span></h2>
+        <p class="section-subtitle">
+          An inside look at our engineering standards, creative direction, and digital innovation.
+        </p>
+      </div>
+
+      <div class="company-video-card glass-card">
+        <div class="company-video-wrapper">
+          <video 
+            class="company-video" 
+            src="assets/CompanyVideo.mp4" 
+            autoplay 
+            muted 
+            loop 
+            playsinline 
+            disablepictureinpicture
+            disableremoteplayback
+            tabindex="-1"
+            preload="auto"
+          ></video>
+        </div>
+        <div class="company-video-info">
+          <div class="company-info-pill">
+            <span class="proof-pill-spark">★</span>
+            <span>Official Venture Showcase</span>
+          </div>
+          <p class="company-info-text">
+            Designed, architected, and built to push the boundaries of modern AI-driven digital experiences.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="container footer-inner">
@@ -1557,6 +1553,6 @@
   </button>
 
   <!-- Main JavaScript File with Cache-Busting -->
-  <script src="main.js?v=26.4"></script>
+  <script src="main.js?v=27.2"></script>
 </body>
 </html>
