@@ -419,6 +419,16 @@ const projectDetails = {
     tech: ['HTML5', 'CSS Tokens', 'JavaScript ES6', 'Canvas API', 'Web Audio API'],
     github: 'https://github.com/Prateek-Dhar-Dwivedi/-Portfolio',
     demo: 'https://prateek-dhar-dwivedi.github.io/-Portfolio/'
+  },
+  aifestival: {
+    title: 'AI Festival - UI/UX Design System & Prototype',
+    category: 'UI/UX & Product Design',
+    image: 'assets/portfolio_real.png',
+    isFigma: true,
+    description: 'A modern UI/UX design system and landing experience designed for an AI Festival event. Published openly on the Figma Community, this file features a rich dark-aesthetic design language, glassmorphism cards, structured typography scales, responsive hero layouts, and interactive design tokens tailored for AI/tech events.',
+    tech: ['Figma', 'UI/UX Design', 'Design Systems', 'Prototyping', 'Component Architecture', 'Figma Community'],
+    github: 'https://www.figma.com/community/file/1684861707229091288/aifestival',
+    demo: 'https://www.figma.com/community/file/1684861707229091288/aifestival'
   }
 };
 
@@ -444,8 +454,12 @@ function openProjectModal(key) {
       </div>
     </div>
     <div style="display:flex; gap:1rem; flex-wrap:wrap;">
-      <a href="${p.github}" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">View GitHub →</a>
-      <a href="${p.demo}" target="_blank" class="btn btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">Live Launch →</a>
+      ${p.isFigma ? `
+        <a href="${p.demo}" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem; background: linear-gradient(135deg, #a259ff, #f24e1e); border: none;">Open on Figma Community →</a>
+      ` : `
+        <a href="${p.github}" target="_blank" class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">View GitHub →</a>
+        <a href="${p.demo}" target="_blank" class="btn btn-secondary" style="padding: 0.6rem 1.25rem; font-size: 0.88rem;">Live Launch →</a>
+      `}
     </div>
   `;
 
