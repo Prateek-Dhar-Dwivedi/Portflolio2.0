@@ -494,6 +494,7 @@ function initCommandPalette() {
     { label: 'Toggle Audio Sound FX', action: () => toggleSound() },
     { label: 'Open GitHub Profile', action: () => window.open('https://github.com/Prateek-Dhar-Dwivedi', '_blank') },
     { label: 'Open LinkedIn Profile', action: () => window.open('https://linkedin.com/in/prateek-dhar-dwivedi', '_blank') },
+    { label: 'Open Figma Profile', action: () => window.open('https://www.figma.com/@prateekdhar', '_blank') },
     { label: 'Open Instagram Profile', action: () => window.open('https://www.instagram.com/prateekdhardwivedi/', '_blank') }
   ];
 
